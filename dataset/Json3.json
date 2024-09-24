@@ -1,0 +1,50 @@
+{
+	"name": "Json3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "jsonfiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "newjsonfiles",
+				"fileSystem": "23-09-2024"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"type": "string"
+				},
+				"price": {
+					"type": "number"
+				},
+				"quantity": {
+					"type": "integer"
+				},
+				"category": {
+					"type": "string"
+				},
+				"supplier": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"country": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

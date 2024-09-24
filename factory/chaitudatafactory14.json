@@ -1,0 +1,9 @@
+{
+	"name": "chaitudatafactory14",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "262908b9-57a6-4fbf-a2de-ef7c369070a1",
+		"tenantId": "9aa74b97-06c5-4cd4-9369-ad1d5088e9ee"
+	}
+}
