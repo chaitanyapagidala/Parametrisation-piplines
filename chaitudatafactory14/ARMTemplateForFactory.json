@@ -38,6 +38,10 @@
 		"jsonfiles_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://jsondata12.dfs.core.windows.net/"
+		},
+		"newfiles arrived_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/ddbf800b-71f4-4955-ba12-5f5e7cf2353a/resourceGroups/mainresource/providers/Microsoft.Storage/storageAccounts/jsondata12"
 		}
 	},
 	"variables": {
@@ -383,6 +387,37 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/newfiles arrived')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "cop _with_get metadata_pipline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/23-09-2024/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('newfiles arrived_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated",
+						"Microsoft.Storage.BlobDeleted"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/cop _with_get metadata_pipline')]"
+			]
 		}
 	]
 }
